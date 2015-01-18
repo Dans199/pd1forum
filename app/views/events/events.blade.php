@@ -5,11 +5,24 @@
 	<title>Events</title>
 @stop
 
+
 @section('content')
-<div class="jumbotron">
-  <h1>Hello, This  is  going to be a  event section  :)</h1>
-  <p>.dun</p>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-</div>
+
+	@if(Session::has('success'))
+		<div class="alert alert-success">{{ Session::get('success') }}</div>
+	@elseif (Session::has('fail'))
+		<div class="alert alert-danger">{{ Session::get('fail') }}</div>
+	@endif
+
+	<ol class="breadcrumb">
+	<li><a href="{{ URL::route('home') }}">Home</a></li>
+	@if(Auth::check())
+	<a href="{{ URL::route('get-new-event') }}" class="btn btn-primary btn-xs pull-right">Add New Event!</a>
+@endif
+</ol>
+
+
+
+
 
 @stop

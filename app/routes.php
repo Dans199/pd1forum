@@ -61,5 +61,22 @@ Route::group(array('prefix' => '/forum'), function()// prefiksējam groupu  kas 
 Route::group(array('prefix' => '/events'), function()// prefiksējam groupu  kas atbildes par  /events sadaļu
 {
 	Route::get('/', array('uses' => 'EventController@events', 'as' => 'event-home'));// atbild  par  /event root
+
+	Route::group(array('before' => 'auth'), function() //parbauda vai lietotaji ir  ielogojushies
+	{
+		Route::get('/new', array('uses' => 'EventController@newevents', 'as' => 'get-new-event'));
+
+		Route::group(array('before' => 'csrf'), function()
+		{
+			Route::post('/new', array('uses' => 'EventController@storeEvent', 'as' => 'store-event'));
+			
+	});
+
+	//Route::group(array('before' => 'admin'), function()
+	//{
+	//	Route::get('/delete', array('uses' => 'EventController@deleteEvent', 'as' => 'delete-event'));
+
+	});
+
 	
 });

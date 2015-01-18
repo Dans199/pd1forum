@@ -11,24 +11,17 @@
 @foreach($groups as $group) 
  {{--katrai grupai savs panelis--}}  
 
-<div class="panel panel-info">
-		<div class="panel-heading">
 
-			<h3 class="panel-title">{{ $group->title }}</h3>
-		</div>
-		<div class="panel-body panel-list-group">
-			<div class="list-group">
-				@foreach($categories as  $category) 
+ 	<h3 class="panel-title">{{ $group->title }}:</h3>
 
-				{{--katrai kategorijai izdruka savu virsrakstus--}}  
-
-					@if($category->group_id == $group->id) 	{{--parbauda vai esošā kategorija pieder grupai--}}   
-					<a href="{{ URL::route('forum-category', $category->id) }}" class="list-group-item">{{ $category->title }}</a> {{--rooto uz  categorijas adresi kuru  norada ar category->id --}} 
-					@endif
+ 	    <ul class="list-group">
+ 	@foreach($categories as  $category) {{--katrai kategorijai izdruka savu virsrakstus--}}  
+ 			@if($category->group_id == $group->id)
+					<li class="list-group-item"><a href="{{ URL::route('forum-category', $category->id) }}">{{ $category->title }}</a></li> {{--rooto uz  categorijas adresi kuru  norada ar category->id --}} 
+									@endif
 				@endforeach
-			</div>
-		</div>
-	</div>
+
+      </ul>
 @endforeach
 @stop
 

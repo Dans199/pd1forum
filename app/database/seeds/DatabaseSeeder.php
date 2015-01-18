@@ -34,4 +34,3 @@ class DatabaseSeeder extends Seeder {
 				ForumCategory::create(array('group_id' => 1,'title' => 'Funny stuff','author_id' => 1));
 		    }
 		}
-

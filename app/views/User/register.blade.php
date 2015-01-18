@@ -33,7 +33,7 @@
 			</div>
 			{{ Form::token() }}
 			<div class="form-group">
-				<input type="submit" value="Register" class="btn btn-default">
+				<input type="submit" value="Register" class="btn btn-primary">
 			</div>
 		</form>
 	</div>	

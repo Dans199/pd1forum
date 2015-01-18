@@ -8,6 +8,12 @@
 @section('content')
 	<h1>New thread</h1>
 
+		@if(Session::has('success'))
+		<div class="alert alert-success">{{ Session::get('success') }}</div>
+	@elseif (Session::has('fail'))
+		<div class="alert alert-danger">{{ Session::get('fail') }}</div>
+	@endif
+
 	<form action="{{ URL::route('forum-store-thread', $id) }}" method="post">
 		<div class="form-group">
 			<label for="title">Title: </label>
