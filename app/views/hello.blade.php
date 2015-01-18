@@ -6,7 +6,7 @@
 @stop
 
 @section ('content')
-<body class="container">
+
     <div class="row">
   <div class="col-md-8 col-md-offset-2">
 
@@ -14,10 +14,18 @@
 		 <br>
 			<h3>Participate in our community discussions, have your voice heard!</h3>
 			<br>
-        <img src="http://media1.gameinformer.com/filestorage/CommunityServer.Components.SiteFiles/imagefeed/featured/mlg/MLGPAX610.jpg" alt="Pro gaming pic"> 
+        <img width="560" height="315" src="http://media1.gameinformer.com/filestorage/CommunityServer.Components.SiteFiles/imagefeed/featured/mlg/MLGPAX610.jpg" alt="Pro gaming pic"> 
+    	<br> 
+    	<br>
+    	<h4> Chekc out  one of  our  member  youtube chanels :)</h4>
+    		<iframe width="560" height="315" src="//www.youtube.com/embed/w_SHZNFn27o" frameborder="0" allowfullscreen></iframe>
     	<p>This web page was created by Dans Grīnšteins (dg13030). Props to him :) !!!</p>
     </div>
-</body>
+   </div>
+
+
+   
+
 
 
 

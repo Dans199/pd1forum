@@ -3,13 +3,14 @@
 <head>
 	@section('head')
 	<meta charset="UTF-8">
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 	
 	@show
 </head>
 <body>
-	<div class="navbar">
+	<div  class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -22,15 +23,19 @@
 			<div class="navbar-collapse collapse navbar-responsive-collapse">
 			<ul class="nav navbar-nav">
 				<li><a href="{{ URL::route('forum-home') }}">Forums</a></li>
-				<li><a href="{{ URL::route('forum-home') }}">Events</a></li>
+				<li><a href="{{ URL::route('event-home') }}">Events</a></li>
+				
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
+
 				@if(!Auth::check())
 					<li><a href="{{ URL::route('getCreate') }}">Register</a></li>
 					<li><a href="{{ URL::route('getLogin') }}">Login</a></li>
 				@else
 					<li><a href="{{ URL::route('getLogout') }}">Logout</a></li>
 				@endif
+
+
 			</ul>
 		</div>
 		</div>

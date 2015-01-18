@@ -12,19 +12,14 @@
 	<li class="active">{{ $category->title }}</li>
 </ol>
 
-
-<div class="panel panel-primary">
+@if(Auth::check())
+	<a href="{{ URL::route('forum-get-new-thread', $category->id) }}" class="btn btn-default">Add Thread!</a>
+@endif
+<div class="panel panel-info">
 	<div class="panel-heading">
-		@if(Auth::check() && Auth::user()->isAdmin())
-		<div class="clearfix">
-			<h3 class="panel-title pull-left">{{ $category->title }}</h3>
-			<a id="{{ $category->id }}" href="#" data-toggle="modal" data-target="#category_delete" class="btn btn-danger btn-xs pull-right delete_category">Delete</a>
-		</div>
-		@else
 		<div class="clearfix">
 			<h3 class="panel-title pull-left">{{ $category->title }}</h3>
 		</div>
-		@endif
 	</div>
 	<div class="panel-body panel-list-group">
 		<div class="list-group">
@@ -38,5 +33,5 @@
 
 @section('javascript')
 	@parent
-	<script type="text/javascript" src="/js/app.js"></script>
+	<script type="text/javascript" src="/js/aplikacijas.js"></script>
 @stop

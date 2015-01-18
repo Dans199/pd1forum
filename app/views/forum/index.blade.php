@@ -11,7 +11,7 @@
 @foreach($groups as $group) 
  {{--katrai grupai savs panelis--}}  
 
-	<div class="panel panel-primary">
+<div class="panel panel-info">
 		<div class="panel-heading">
 
 			<h3 class="panel-title">{{ $group->title }}</h3>
@@ -30,7 +30,5 @@
 		</div>
 	</div>
 @endforeach
-
-
 @stop
 
