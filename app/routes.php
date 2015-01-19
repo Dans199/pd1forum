@@ -60,7 +60,8 @@ Route::group(array('prefix' => '/forum'), function()// prefiksējam groupu  kas 
 
 Route::group(array('prefix' => '/events'), function()// prefiksējam groupu  kas atbildes par  /events sadaļu
 {
-	Route::get('/', array('uses' => 'EventController@events', 'as' => 'event-home'));// atbild  par  /event root
+	Route::get('/', array('uses' => 'EventController@index', 'as' => 'event-home'));// atbild  par  /event root
+
 
 	Route::group(array('before' => 'auth'), function() //parbauda vai lietotaji ir  ielogojushies
 	{

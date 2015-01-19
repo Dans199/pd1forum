@@ -5,7 +5,6 @@
 	<title>Events</title>
 @stop
 
-
 @section('content')
 
 	@if(Session::has('success'))
@@ -16,13 +15,36 @@
 
 	<ol class="breadcrumb">
 	<li><a href="{{ URL::route('home') }}">Home</a></li>
-	@if(Auth::check())
+	@if(Auth::check() && Auth::user()->isAdmin())
 	<a href="{{ URL::route('get-new-event') }}" class="btn btn-primary btn-xs pull-right">Add New Event!</a>
-@endif
-</ol>
+	@endif
+	</ol>
 
-
-
-
-
+    <H1> Events ar  entered by admin</h1>
+    <p>Send email to dans.grinsteins@gmail.com  to sign up :)
+        <br>
+        If u have  interestin event  offers  send  them to my  email :)
+     </p>
+    <table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Title</td>
+            <td>When</td>
+            <td>Where</td>
+            <td>Description</td>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach($events as $key => $value)
+        <tr>
+            <td>{{ $value->id }}</td>
+            <td>{{ $value->title }}</td>
+            <td>{{ $value->when }}</td>
+            <td>{{ $value->where }}</td>
+            <td>{{ $value->description }}</td>
+        </tr>
+    @endforeach
+    </tbody>
+</table>
 @stop

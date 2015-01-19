@@ -16,14 +16,26 @@
 
 <form action="{{ URL::route('store-event') }}" method="post">
 		<div class="form-group">
-			<label for="where">Where: </label>
-			<input type="text" class="form-control" name="where" id="where">
+			<label for="title">Title: </label>
+			<input type="text" class="form-control" name="title" id="title">
 		</div>
 
 		<div class="form-group">
 			<label for="when">when: </label>
-			<input type="date" class="form-control" name="when" id="when">
+			<input type="text" class="form-control" name="when" id="when">
 		</div>
+
+		<div class="form-group">
+			<label for="where">where: </label>
+			<input type="text" class="form-control" name="where" id="where">
+		</div>
+
+
+		<div class="form-group">
+			<label for="description">description: </label>
+			<textarea class="form-control" name="description" id="description"></textarea>
+		</div>
+		{{ Form::token() }}
 		<div class="form-group">
 			<input type="submit" value="Save Event" class="btn btn-primary">
 		</div>
