@@ -14,30 +14,27 @@
 		<div class="alert alert-danger">{{ Session::get('fail') }}</div>
 	@endif
 
-<form action="{{ URL::route('store-event') }}" method="post">
-		<div class="form-group">
-			<label for="title">Title: </label>
-			<input type="text" class="form-control" name="title" id="title">
-		</div>
+{{ Form::open(array('route' => 'store-event')) }}
 
-		<div class="form-group">
-			<label for="when">when: </label>
-			<input type="text" class="form-control" name="when" id="when">
-		</div>
+    <div class="form-group">
+        {{ Form::label('title', 'Title') }}
+        {{Form::text('title', Input::old('title'), array('class' => 'form-control')) }}
+    </div>
 
-		<div class="form-group">
-			<label for="where">where: </label>
-			<input type="text" class="form-control" name="where" id="where">
-		</div>
+    <div class="form-group">
+        {{ Form::label('when', 'When:') }}
+        {{Form::text('when', Input::old('when'),  array('class' => 'form-control')) }}
+    </div>
+      <div class="form-group">
+        {{Form::label('where', 'Where:') }}
+        {{Form::text('where', Input::old('where'), array('class' => 'form-control')) }}
+    </div>
 
+     <div class="form-group">
+        {{ Form::label('description', 'Description:') }}
+        {{Form::text('description', Input::old('description'), array('class' => 'form-control')) }}
+    </div>
+    {{ Form::submit('Create Event!', array('class' => 'btn btn-primary')) }}
+{{ Form::close() }}
 
-		<div class="form-group">
-			<label for="description">description: </label>
-			<textarea class="form-control" name="description" id="description"></textarea>
-		</div>
-		{{ Form::token() }}
-		<div class="form-group">
-			<input type="submit" value="Save Event" class="btn btn-primary">
-		</div>
-	</form>
 @stop

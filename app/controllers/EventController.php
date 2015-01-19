@@ -17,29 +17,32 @@ class EventController extends BaseController
 
     	public function storeEvent()
 	{
-
-		$data = Input::all();
                
-                $rules = $rules = array(
-			'title' => 'required|min:3|max:255',
-			'when'  => 'required|min:10|max:255',
-			'where'  => 'required|min:10|max:255',
-			'description' => 'required|min:10|max:65000',
-                );
+          $rules = array(
+          	'title' => 'required|min:3|max:255',
+          	'when'  => 'required|min:3|max:255',
+          	'where'  => 'required|min:3|max:255',
+          	'description' => 'required|min:3|max:255'
+          	);
 
-          $validator = Validator::make($data, $rules);
+          $validator = Validator::make(Input::all(), $rules);
 
-			if ($validator->passes())
-             {
+    // process the login
+        if ($validator->fails())
+        	{
+               return Redirect::route('get-new-event')->with('fail', "Wrong  input data try agen .");;
+        	} 
+        else 
+        	{
+            // store
 
-				$event = new EventNow();
-				$event->title = $data['title'];
-				$event->when =  $data['when'];
-				$event->where = $data ['where'];
-				$event->description = $data['description'];
+            	$event = new EventNow;
+				$event->title = Input::get('title');
+				$event->when =  Input::get('when');
+				$event->where = Input::get('where');
+				$event->description = Input::get('description');
 				$event->author_id = Auth::user()->id;
 				$event->save();
-				
 
 				if ($event->save())
 				{
@@ -47,9 +50,26 @@ class EventController extends BaseController
 				}
 				else
 				{
-					return Redirect::route('get-new-event')->with('fail', "An error occured while saving your thread.")->withInput();
+					return Redirect::route('get-new-event')->with('fail', "An error occured while saving your event.")->withInput();
 				}
 			}
 	}
+
+	   public function deleteEvent($id)
+    {
+
+        $event = EventNow::find($id);
+
+		if ($event->delete())
+		{
+			return Redirect::route('event-home')->with('success', "The events  was deleted.");
+		}
+			else
+			{
+				return Redirect::route('event-home')->with('fail', "An error occured while deleting the event.");
+			}
+
+			
+    }
 
 }

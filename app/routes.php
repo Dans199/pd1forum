@@ -67,15 +67,12 @@ Route::group(array('prefix' => '/events'), function()// prefiksējam groupu  kas
 	{
 		Route::get('/new', array('uses' => 'EventController@newevents', 'as' => 'get-new-event'));
 
-		Route::group(array('before' => 'csrf'), function()
-		{
-			Route::post('/new', array('uses' => 'EventController@storeEvent', 'as' => 'store-event'));
-			
-	});
+	Route::group(array('before' => 'admin'), function()
+	{	
+		Route::post('/storeEvent', array('uses' => 'EventController@storeEvent', 'as' => 'store-event'));
+		Route::get('/{id}/delete', array('uses' => 'EventController@deleteEvent', 'as' => 'delete-event'));
 
-	//Route::group(array('before' => 'admin'), function()
-	//{
-	//	Route::get('/delete', array('uses' => 'EventController@deleteEvent', 'as' => 'delete-event'));
+	});
 
 	});
 

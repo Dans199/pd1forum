@@ -84,10 +84,8 @@ class ForumController extends BaseController
 		$comments = $thread->comments;
 		if ($comments->count() > 0)
 		{
-			if ($comments->delete() && $thread->delete())
-				return Redirect::route('forum-category', $category_id)->with('success', "The thread was deleted.");
-			else
-				return Redirect::route('forum-category', $category_id)->with('fail', "An error occured while deleting the thread.");
+
+				return Redirect::route('forum-thread', $id)->with('fail', "Delete comments  before  deleting the thread.");
 		}
 		else
 		{
